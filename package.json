@@ -13,6 +13,6 @@
   "scripts": {
     "build": "tsc",
     "start": "node bot.js",
-    "dev": "nodemon bot.ts"
+    "dev": "tsx bot.ts"
   }
 }
