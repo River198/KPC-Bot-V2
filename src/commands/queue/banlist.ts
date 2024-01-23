@@ -1,6 +1,6 @@
-import { SlashCommandBuilder, type ChatInputCommandInteraction, EmbedBuilder, inlineCode, time } from "discord.js";
+import { SlashCommandBuilder, type ChatInputCommandInteraction, EmbedBuilder, time } from "discord.js";
 import dotenv from 'dotenv'
-import type { Bans } from "../../types";
+import type { Bans } from "../../types.js";
 
 dotenv.config()
 

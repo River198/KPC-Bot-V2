@@ -1,11 +1,18 @@
 import { Client, GatewayIntentBits } from 'discord.js';
-import { refetchRoutes } from './routes';
+import { refetchRoutes } from './routes.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
 import dotenv from 'dotenv';
-import type { Command } from './types';
+import type { Command } from './types.js';
 
+process.on("uncaughtException", (err) => {
+	console.log(err);
+  });
+  
+  process.on("unhandledRejection", (err) => {
+	console.log(err);
+  });
 dotenv.config()
 
 const __filename = fileURLToPath(import.meta.url);
@@ -18,7 +25,7 @@ const commandFolders = fs.readdirSync(foldersPath);
 
 for (const folder of commandFolders) {
 	const commandsPath = path.join(foldersPath, folder);
-	const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.ts'));
+	const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.ts') || file.endsWith('.js'));
 	for (const file of commandFiles) {
 		const filePath = path.join(commandsPath, file);
 		const url = new URL(`file://${filePath}`);

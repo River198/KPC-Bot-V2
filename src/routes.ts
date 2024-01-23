@@ -1,5 +1,5 @@
 import { REST, Routes } from 'discord.js';
-import {type Command} from './types'
+import {type Command} from './types.js'
 import dotenv from 'dotenv'
 
 dotenv.config()

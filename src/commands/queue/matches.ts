@@ -1,5 +1,5 @@
 import { SlashCommandBuilder, type ChatInputCommandInteraction, EmbedBuilder, inlineCode } from "discord.js";
-import type { MatchesResponse } from "../../types";
+import type { MatchesResponse } from "../../types.js";
 
 function isEmpty(obj: Object) {
     for(var prop in obj) {
@@ -41,7 +41,7 @@ export async function execute(interaction: ChatInputCommandInteraction) {
             let averageEloT1 = 0;
             let averageEloT2 = 0;
 
-            currentMatch.players.forEach((p) => {
+            currentMatch?.players.forEach((p) => {
                 if(p.team_num == 0) {
                     allPlayerT1Names.push(p.captain ? `${p.name} (C)` : p.name);
                     averageEloT1 += p.mmr
@@ -50,8 +50,8 @@ export async function execute(interaction: ChatInputCommandInteraction) {
                     averageEloT2 += p.mmr
                 }
             })
-            averageEloT1 /= currentMatch.players.length / 2;
-            averageEloT2 /= currentMatch.players.length / 2;
+            averageEloT1 /= currentMatch!.players.length / 2;
+            averageEloT2 /= currentMatch!.players.length / 2;
 
             const playerString = `${inlineCode(allPlayerT1Names.join(', '))} ***VS*** ${inlineCode(allPlayerT2Names.join(', '))}`
 
