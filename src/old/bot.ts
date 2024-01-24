@@ -48,6 +48,8 @@ client.on('ready', async () => {
     console.log(`Logged in as ${client.user?.tag}!`);
 });
 
+client.user?.setActivity('Your Custom Status Here', { type: 'PLAYING' });
+
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 
